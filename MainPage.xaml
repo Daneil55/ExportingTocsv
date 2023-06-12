@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExportingTocsv.MainPage"
+             Title="MainPage">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Text="{Binding title}" TextColor="Blue" FontSize="20"/>
+            <!--<Entry Text="{Binding entry}" TextChanged="Entry_TextChanged"/>-->
+            <ListView x:Name="collectionV" 
+             ItemSelected="collectionV_ItemSelected">
+                <ListView.ItemTemplate  >
+                    <DataTemplate  >
+                        <ViewCell>
+                            <Frame HeightRequest="90" BackgroundColor="Snow"  BorderColor="Beige" Margin="2">
+                                <Grid  Padding="0,0,0,0" Loaded="Grid_Loaded">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                       
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                  
+                                    <Image  WidthRequest="60" Scale="2" Source="dotnet_bot.png" Grid.Column="0" Grid.Row="0" HeightRequest="60">
+                                        <Image.Shadow>
+                                            <Shadow Opacity="0" />
+                                        </Image.Shadow>
+                                        <Image.Clip>
+                                            <EllipseGeometry RadiusX="20" RadiusY="20" Center="20,20"/>
+                                        </Image.Clip>
+                                    </Image>
+                            
+                                    <!--<Label Text="{Binding id }"   Grid.Column="0" TextColor="Blue" FontSize="15"/>-->
+                                    <Label Text="{Binding name }"   Grid.Column="1" TextColor="Blue" FontSize="15"/>
+                                    <Label Text="{Binding secName}"  Grid.Column="2" TextColor="Blue" FontSize="15"/>
+                                    <RadioButton  GroupName="{Binding GroupName}" IsChecked="{Binding result, Mode=TwoWay}" CheckedChanged="RadioButton_CheckedChanged" Margin="0,-85,0,-40" Grid.Row="0" Grid.Column="3" >
+                                        <RadioButton.Content>
+                                            <Label Text="Present"  
+                                                       TextColor="Blue"
+                                                       FontSize="15"  
+                                                       HorizontalOptions="Center"
+                                                      VerticalOptions="End"  />
+                                        </RadioButton.Content>
+                                    </RadioButton>
+                                    <RadioButton  GroupName="{Binding GroupName}" IsChecked="{Binding ab, Mode=TwoWay}" CheckedChanged="RadioButton_CheckedChanged_1"  Grid.Row="0" Margin="0,-40,0,-40" Grid.Column="3" >
+                                        <RadioButton.Content>
+                                            <Label Text="Absent"  
+                                                       TextColor="Blue"
+                                                       FontSize="15"  
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="End"  />
+                                        </RadioButton.Content>
+                                    </RadioButton>
+                                    <RadioButton  GroupName="{Binding GroupName}" IsChecked="{Binding ex, Mode=TwoWay}" CheckedChanged="RadioButton_CheckedChanged_2"  Grid.Row="0" Margin="0,5,0,-40" Grid.Column="3" >
+                                        <RadioButton.Content>
+                                            <Label Text="excuse"  
+                                                       TextColor="Blue"
+                                                       FontSize="15"  
+                                                       HorizontalOptions="Center"
+                                                       VerticalOptions="End"  />
+                                        </RadioButton.Content>
+                                    </RadioButton>
+                                    <Image Source="check.png" Grid.Row="1"  Grid.Column="3" WidthRequest="40" HeightRequest="40" IsVisible="false" />
+                                    <Image Source="close.png" Grid.Row="1"  Grid.Column="3" WidthRequest="40" HeightRequest="40" IsVisible="false"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button x:Name="Read" Text="Read" Clicked="Read_Clicked"/>
+            <CollectionView x:Name="collection1">
+                <CollectionView.EmptyView>
+                    <Label Text="Please read today" TextColor="Blue" FontSize="15"/>
+                </CollectionView.EmptyView>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame HeightRequest="100">
+                            <Grid Padding="0,0,0,-10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding name}" Grid.Column="0" TextColor="Blue" FontSize="15"/>
+                                <Label Text="{Binding presence}" Grid.Column="1" TextColor="Blue" FontSize="15"/>
+                                <Label Text="{Binding dates}" Grid.Column="2" TextColor="Blue" FontSize="15"/>
+                            </Grid>
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Button x:Name="Todays" Text="Atendence" Clicked="Todays_Clicked"/>
+            <Button x:Name="email" Text="email" Clicked="email_Clicked"/>
+            <!--<StackLayout>
+                <Label Text="ROTATION"
+               BindingContext="{x:Reference slider}"
+               Rotation="{Binding Path=Value}"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+                <Slider x:Name="slider"
+                Maximum="360"
+                VerticalOptions="Center" />
+                <Label BindingContext="{x:Reference slider}"
+               Text="{Binding Value, StringFormat='The angle is {0:F0} degrees'}"
+               FontAttributes="Bold"
+               FontSize="18"
+               HorizontalOptions="Center"
+               VerticalOptions="Center" />
+            </StackLayout>-->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

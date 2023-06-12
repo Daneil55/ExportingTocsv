@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExportingTocsv.SavingPage"
+             Title="SavingPage">
+
+    <VerticalStackLayout>
+
+            <!--<ListView x:Name="listView"
+              HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding .}"/>
+                        <Button Text="Delete" Clicked="Button_Clicked"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>-->
+
+            <ImageButton x:Name="image" Clicked="ImageButton_Clicked" WidthRequest="100" HeightRequest="100"/>
+            <Label 
+             Text="Welcome to .NET MAUI!"
+             VerticalOptions="Center" 
+             HorizontalOptions="Center" 
+             />
+            <Entry x:Name="name" Placeholder="first name" PlaceholderColor="Gray"/>
+            <Entry x:Name="secName" Placeholder="second name" PlaceholderColor="Gray"/>
+            <Button x:Name="save" Clicked="save_Clicked" Text="Save"/>
+    </VerticalStackLayout>
+
+</ContentPage>
